@@ -1,0 +1,12 @@
+recipe: default.v1
+language: en
+pipeline:
+- name: SingleStepLLMCommandGenerator
+  llm:
+    model_name: gpt-4 # Replace with finetuned LLM for low latency
+
+policies:
+- name: FlowPolicy
+#  - name: EnterpriseSearchPolicy
+#  - name: RulePolicy
+assistant_id: 20241024-141452-salty-deed

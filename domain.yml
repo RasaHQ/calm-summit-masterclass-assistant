@@ -1,0 +1,101 @@
+version: "3.1"
+
+slots:
+  recipient:
+    type: text
+    mappings:
+      - type: from_llm
+  amount:
+    type: float
+    mappings:
+      - type: from_llm
+  
+  replacement_reason:
+    type: categorical
+    values:
+      - lost
+      - damaged
+      - never_received
+      - stolen
+    mappings: 
+    - type: from_llm
+  lock_card:
+    type: bool
+    mappings:
+      - type: from_llm
+  replace_card: 
+    type: bool
+    mappings:
+      - type: from_llm
+  address_line_1:
+    type: text
+    mappings:
+      - type: from_llm
+  city:
+    type: text
+    mappings:
+     - type: from_llm
+  state:
+    type: text
+    mappings:
+      - type: from_llm
+  zip_code:
+    type: text
+    mappings:
+      - type: from_llm
+  confirm_address:
+    type: bool
+    mappings:
+      - type: from_llm
+  transactions_list:
+    type: text
+    mappings:
+      - type: custom
+
+responses:
+  utter_ask_recipient:
+    - text: "Who would you like to send money to?"
+
+  utter_ask_amount:
+    - text: "How much money would you like to send?"
+
+  utter_transfer_complete:
+    - text: "All done. {amount} has been sent to {recipient}."
+  
+  utter_ask_replacement_reason:
+    - text: Why do you need to replace this card?
+  
+  utter_ask_lock_card:
+    - text: I am sorry, this happened to you. First things first, we need to secure your accounts. Would you like me to lock all your cards temporarily while we figure things out?
+      metadata:
+        rephrase: True
+  utter_card_locked:
+    - text: Understood. your cards are now temporarily blocked to prevent any unauthorized transactions.
+      metadata:
+        rephrase: True
+  utter_ask_replace_card:
+    - text: would you like me to issue replacement cards?
+  utter_ask_confirm_address:
+    - text: "I just need to make sure I have your address correct. Is this right? 1 Embarcadero center, San Francisco"
+  utter_new_card_has_been_ordered:
+    - text: I’ll go ahead and process replacements for your cards. You’ll receive them within 3 to 5 business days.
+  utter_card_arrival:
+    - text: "Great. I will send those cards there. You’ll receive them within 3 to 5 business days."
+  utter_different_address:
+    - text: "OK, if you'd like your order mailed to a different address, you'll need to give us a call."
+  utter_connect_to_specialist:
+    - text: "Let me get you to someone who can help."
+  utter_transactions:
+    - text: "Your last transaction was:\n {transactions_list}"
+      metadata:
+        rephrase: True
+  utter_callback:
+    - text: Sure. No problem. Feel free to call us back if you need to replace your card
+      metadata:
+        rephrase: True
+  utter_session_start:
+    - text: Hi, I am your banking assistant. How may i help you today?
+      metadata:
+        rephrase: True
+actions:
+  - transaction_search
