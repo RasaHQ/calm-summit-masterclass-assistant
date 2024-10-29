@@ -5,6 +5,9 @@
 ### Pre requesities
 * a free Rasa Pro [Developer Edition license](https://rasa.com/docs/rasa-pro/developer-edition)
 * an API key for OpenAI or another [LLM provider](https://rasa.com/docs/rasa-pro/concepts/components/llm-configuration)
+* an API key for Speech Services
+  - Deepgram for ASR (only supported for alpha)
+  - Cartesia (TTS) or Azure (TTS)
 * Twilio account and a phone number (Optional for IVR). 
 
 
@@ -93,7 +96,7 @@ browser_audio:
     endpointing: 300
   tts:
     name: cartesia
-    
+
 ```
 
 ```
