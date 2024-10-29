@@ -12,7 +12,7 @@
 
 * Install Rasa Pro 3.11 alpha version 
 ```
-uv pip install "rasa-pro==3.11.0a1" --prerelease=allow
+uv pip install "rasa-pro==3.11.0a3" --prerelease=allow
 ```
 
 * Set environment variables
@@ -84,7 +84,17 @@ Here's an example conversation
 
 ### Local Testing
 
-coming soon: alphav2
+Integrate the local channel connector
+```
+browser_audio:
+  server_url: localhost
+  asr:
+    name: deepgram #export DEEPGRAM_API_KEY
+    endpointing: 300
+  tts:
+    name: cartesia
+    
+```
 
 ```
 rasa inspect --voice
