@@ -40,6 +40,18 @@ action_endpoint:
 #  username: username
 #  password: password
 #  queue: queue
-
+#tracing:
+#  type: otlp
+#  endpoint: localhost:4317
+#  insecure: true
+#  host: localhost
+#  service_name: rasa
 nlg:
   type: rephraser.quick_contextual_rephraser.QuickResponseRephraser
+  llm:
+    provider: self-hosted
+    model: rasa/cmd_gen_llama_3.1_8b_calm_demo
+    api_base: http://34.133.242.178:8000/v1
+    timeout: 7
+    max_tokens: 256
+    temperature: 0

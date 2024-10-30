@@ -11,6 +11,7 @@ flows:
     name: replace eligible card
     steps:
       - collect: replacement_reason
+        description: user can provide a reason why they want to replace their card such as losing their wallet thus losing their card.
         next:
           - if: slots.replacement_reason = "lost"
             then:
