@@ -5,7 +5,7 @@ pipeline:
   llm:
     provider: self-hosted
     model: rasa/cmd_gen_llama_3.1_8b_calm_demo
-    api_base: http://34.133.242.178:8000/v1
+    api_base: http://35.232.53.168:8000/v1
     timeout: 7
     max_tokens: 256
     temperature: 0
