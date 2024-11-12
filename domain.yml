@@ -97,5 +97,7 @@ responses:
     - text: Hi, I am your banking assistant. How may i help you today?
       metadata:
         rephrase: True
+  utter_free_chitchat_response:
+    - text: "Lo siento, pero solo puedo ayudarte con tareas relacionadas con gestiones bancarias."
 actions:
   - transaction_search
