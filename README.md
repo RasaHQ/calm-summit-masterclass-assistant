@@ -1,4 +1,4 @@
-# Chatbot Summit 20025
+# Chatbot Summit 2025
 
 ## Setup
 
