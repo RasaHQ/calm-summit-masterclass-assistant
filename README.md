@@ -12,9 +12,9 @@
 
 ### Install
 
-* Install Rasa Pro 3.12 alpha version 
+* Install Rasa Pro 3.12 version 
 ```
-uv pip install "rasa-pro==3.12.0"
+uv pip install "rasa-pro==3.12.3"
 ```
 
 * Set environment variables
@@ -23,7 +23,6 @@ uv pip install "rasa-pro==3.12.0"
 export RASA_PRO_LICENSE="LICENSE_KEY"
 export DEEPGRAM_API_KEY="LICENSE_KEY"
 export CARTESIA_API_KEY="LICENSE_KEY"
-export AZURE_SPEECH_API_KEY="LICENSE_KEY" #if you are using Azure speech services
 ```
 
 
@@ -37,6 +36,7 @@ browser_audio:
     name: deepgram #export DEEPGRAM_API_KEY
   tts:
     name: cartesia #export CARTESIA_API_KEY
+    model: sonic-2
 ```
 
 
