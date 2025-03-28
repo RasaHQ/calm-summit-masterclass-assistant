@@ -1,30 +1,29 @@
-# CALM SUMMIT 2024 - Masterclass
+# Chatbot Summit 20025
 
 ## Setup
 
 ### Pre requesities
 * a free Rasa Pro [Developer Edition license](https://rasa.com/docs/rasa-pro/developer-edition)
-* an API key for OpenAI or another [LLM provider](https://rasa.com/docs/rasa-pro/concepts/components/llm-configuration)
 * an API key for Speech Services
-  - Deepgram for ASR (only supported for alpha)
+  - Deepgram for ASR
   - Cartesia (TTS) or Azure (TTS)
-* Twilio account and a phone number (Optional for IVR). 
+
 
 
 ### Install
 
-* Install Rasa Pro 3.11 alpha version 
+* Install Rasa Pro 3.12 alpha version 
 ```
-uv pip install "rasa-pro==3.11.0a3" --prerelease=allow
+uv pip install "rasa-pro==3.12.0"
 ```
 
 * Set environment variables
 
 ```
 export RASA_PRO_LICENSE="LICENSE_KEY"
-export OPENAI_API_KEY="LICNESE_KEY" #optional if you using another provider
-export DEEPGRAM_API_KEY="LICENSE_KEY" # for alpha, we only support deepgram
+export DEEPGRAM_API_KEY="LICENSE_KEY"
 export CARTESIA_API_KEY="LICENSE_KEY"
+export AZURE_SPEECH_API_KEY="LICENSE_KEY" #if you are using Azure speech services
 ```
 
 
@@ -32,8 +31,8 @@ export CARTESIA_API_KEY="LICENSE_KEY"
 
 Integrate the channel connector for voice native
 ```yaml
-twilio_media_streams:
-  server_url: 8956-2a02-1811-2d87-7800-288a-12d7-22f-edb5.ngrok-free.app
+browser_audio:
+  server_url: localhost
   asr:
     name: deepgram #export DEEPGRAM_API_KEY
   tts:
@@ -49,13 +48,9 @@ rasa train
 ### Test
 
 ```
-rasa run --inspect
+rasa inspect --voice
 
 ```
-
-Open inspector in [read only mode](http://0.0.0.0:5005/webhooks/twilio_media_streams/inspect.html)
-
-Call your bot using Twilio phone number and start talking
 
 Here's an example conversation
 
@@ -83,24 +78,3 @@ Here's an example conversation
 
 **Bot**: Is there anything else I can help you with?
 
-
-
-### Local Testing
-
-Integrate the local channel connector
-```
-browser_audio:
-  server_url: localhost
-  asr:
-    name: deepgram #export DEEPGRAM_API_KEY
-    endpointing: 300
-  tts:
-    name: cartesia
-
-```
-
-```
-rasa inspect --voice
-```
-
-Talk to the inspector with voice

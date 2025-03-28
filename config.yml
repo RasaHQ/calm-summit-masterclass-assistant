@@ -3,17 +3,10 @@ language: en
 pipeline:
 - name: SingleStepLLMCommandGenerator
   llm:
-    provider: self-hosted
-    model: rasa/cmd_gen_llama_3.1_8b_calm_demo
-    api_base: http://35.232.53.168:8000/v1
-    timeout: 7
-    max_tokens: 256
-    temperature: 0
+    model_group: rasa_command_generation_model
   flow_retrieval:
     active: false
 
 policies:
-- name: FlowPolicy
-#  - name: EnterpriseSearchPolicy
-#  - name: RulePolicy
+  - name: FlowPolicy
 assistant_id: 20241024-141452-salty-deed
