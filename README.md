@@ -28,7 +28,7 @@ export CARTESIA_API_KEY="LICENSE_KEY"
 
 ### Configuration
 
-Integrate the channel connector for voice native
+Integrate the channel connector for voice streaming
 ```yaml
 browser_audio:
   server_url: localhost
